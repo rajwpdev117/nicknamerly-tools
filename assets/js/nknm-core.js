@@ -128,6 +128,18 @@
 		});
 	};
 
+	/** Heart (keep) button. */
+	function buildKeep(name) {
+		var b = document.createElement('button');
+		b.type = 'button';
+		b.className = 'nknm-keep';
+		b.setAttribute('data-nknm-keep', name);
+		b.setAttribute('aria-pressed', 'false');
+		b.setAttribute('aria-label', 'Keep ' + name);
+		b.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.6 5 6 5c2 0 3.4 1.1 4 2.3h.1C10.7 6.1 12 5 14 5c3.4 0 5.1 3.4 3.6 6.8C19.5 16.4 12 21 12 21z" transform="translate(1 -.5)"/></svg>';
+		return b;
+	}
+
 	/** Rich result {t: name, k: kanji, m: meaning}: two-line card with a separate kanji copy button. */
 	function buildRichItem(r) {
 		var li = document.createElement('li');
@@ -156,6 +168,7 @@
 		btn.setAttribute('aria-label', 'Copy ' + r.t);
 		btn.textContent = 'Copy';
 		li.appendChild(body);
+		li.appendChild(buildKeep(r.t));
 		li.appendChild(btn);
 		return li;
 	}
@@ -181,6 +194,7 @@
 		btn.setAttribute('aria-label', 'Copy ' + name);
 		btn.textContent = 'Copy';
 		li.appendChild(span);
+		li.appendChild(buildKeep(name));
 		li.appendChild(btn);
 		return li;
 	}
@@ -206,6 +220,65 @@
 		function curCount() { return countEl ? (parseInt(countEl.value, 10) || count) : count; }
 		var withVariants = root.getAttribute('data-nknm-variants') === '1';
 		var shown = [];
+
+		/* ----- Keep tray (browser-only, optional) ----- */
+		var trayEl = root.querySelector('[data-nknm-tray]');
+		var trayList = root.querySelector('[data-nknm-tray-list]');
+		var trayCount = root.querySelector('[data-nknm-tray-count]');
+		var storeKey = 'nknm_keep_' + slug;
+		var kept = [];
+		try {
+			var raw = window.localStorage.getItem(storeKey);
+			var parsed = raw ? JSON.parse(raw) : [];
+			if (Array.isArray(parsed)) kept = parsed.filter(function (x) { return typeof x === 'string' && x.length < 60; }).slice(0, 50);
+		} catch (e) { kept = []; }
+		function saveKept() {
+			try { window.localStorage.setItem(storeKey, JSON.stringify(kept)); } catch (e) { /* storage blocked: keep in memory only */ }
+		}
+		function isKept(n) { return kept.indexOf(n) !== -1; }
+		function syncHearts() {
+			var hs = grid.querySelectorAll('[data-nknm-keep]');
+			for (var i = 0; i < hs.length; i++) {
+				var n = hs[i].getAttribute('data-nknm-keep');
+				var on = isKept(n);
+				hs[i].classList.toggle('is-on', on);
+				hs[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+				hs[i].setAttribute('aria-label', (on ? 'Remove ' : 'Keep ') + n);
+			}
+		}
+		function renderTray() {
+			if (!trayEl) return;
+			trayEl.hidden = kept.length === 0;
+			trayCount.textContent = kept.length ? '(' + kept.length + ')' : '';
+			trayList.textContent = '';
+			kept.forEach(function (n) {
+				var li = document.createElement('li');
+				li.className = 'nknm-kept';
+				var c = document.createElement('button');
+				c.type = 'button';
+				c.className = 'nknm-chip';
+				c.setAttribute('data-nknm-copy', n);
+				c.setAttribute('aria-label', 'Copy ' + n);
+				c.textContent = n;
+				var x = document.createElement('button');
+				x.type = 'button';
+				x.className = 'nknm-kept-x';
+				x.setAttribute('data-nknm-unkeep', n);
+				x.setAttribute('aria-label', 'Remove ' + n);
+				x.textContent = '\u00d7';
+				li.appendChild(c);
+				li.appendChild(x);
+				trayList.appendChild(li);
+			});
+		}
+		function toggleKeep(n) {
+			var i = kept.indexOf(n);
+			if (i === -1) { kept.unshift(n); kept = kept.slice(0, 50); } else { kept.splice(i, 1); }
+			saveKept();
+			syncHearts();
+			renderTray();
+			if (status) status.textContent = n + (i === -1 ? ' kept.' : ' removed.');
+		}
 
 		function closeVariants(li) {
 			var box = li.querySelector('.nknm-variants');
@@ -265,6 +338,7 @@
 			void grid.offsetWidth; // restart the entry animation
 			grid.classList.add('is-fresh');
 			shown = names.map(function (n) { return typeof n === 'object' ? n.t : n; });
+			syncHearts();
 			if (status) status.textContent = names.length + ' new names generated.';
 		}
 
@@ -284,6 +358,48 @@
 			grid.classList.remove('is-fresh');
 			if (status) status.textContent = '';
 		})();
+
+renderTray();
+
+		var styleBtns = root.querySelectorAll('[data-nknm-style]');
+		for (var si = 0; si < styleBtns.length; si++) {
+			styleBtns[si].addEventListener('click', function (e) {
+				var v = e.currentTarget.getAttribute('data-nknm-style');
+				if (styleEl) styleEl.value = v;
+				for (var j = 0; j < styleBtns.length; j++) {
+					var on = styleBtns[j] === e.currentTarget;
+					styleBtns[j].classList.toggle('is-on', on);
+					styleBtns[j].setAttribute('aria-pressed', on ? 'true' : 'false');
+				}
+				generate();
+			});
+		}
+
+		if (trayEl) {
+			trayEl.addEventListener('click', function (e) {
+				var x = e.target.closest('[data-nknm-unkeep]');
+				if (x) { toggleKeep(x.getAttribute('data-nknm-unkeep')); return; }
+				var cp = e.target.closest('[data-nknm-copy]');
+				if (cp) {
+					var t = cp.getAttribute('data-nknm-copy');
+					copyText(t).then(function () {
+						cp.classList.add('is-copied');
+						if (status) status.textContent = t + ' copied to clipboard.';
+						setTimeout(function () { cp.classList.remove('is-copied'); }, 1400);
+					}, function () {});
+					return;
+				}
+				if (e.target.closest('[data-nknm-tray-copy]')) {
+					var all = trayEl.querySelector('[data-nknm-tray-copy]');
+					copyText(kept.join('\n')).then(function () { flash(all, 'Copied!'); }, function () { flash(all, 'Copy failed'); });
+				} else if (e.target.closest('[data-nknm-tray-clear]')) {
+					kept = [];
+					saveKept();
+					syncHearts();
+					renderTray();
+				}
+			});
+		}
 
 		form.addEventListener('submit', function (e) {
 			e.preventDefault();
@@ -318,6 +434,8 @@
 		});
 
 		grid.addEventListener('click', function (e) {
+			var heart = e.target.closest('[data-nknm-keep]');
+			if (heart) { toggleKeep(heart.getAttribute('data-nknm-keep')); return; }
 			var nameBtn = e.target.closest('button.nknm-name');
 			if (nameBtn && withVariants) {
 				toggleVariants(nameBtn.closest('.nknm-item'));
