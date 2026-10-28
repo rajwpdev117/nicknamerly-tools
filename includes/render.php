@@ -44,7 +44,7 @@ function nknm_render_tool( $slug, $atts ) {
 
 	ob_start();
 	?>
-	<div class="nknm-tool<?php echo ( $tool['genders'] || $tool['counts'] || $tool['name2_label'] ) ? ' nknm-tool--wide' : ''; ?>" id="<?php echo esc_attr( $id ); ?>" data-nknm-tool="<?php echo esc_attr( $slug ); ?>" data-nknm-count="<?php echo esc_attr( (string) $count ); ?>" data-nknm-variants="<?php echo $tool['variants'] ? '1' : '0'; ?>">
+	<div class="nknm-tool<?php echo ( $tool['genders'] || $tool['counts'] || $tool['name2_label'] ) ? ' nknm-tool--wide' : ''; ?><?php echo $tool['rich'] ? ' nknm-tool--rich' : ''; ?>" id="<?php echo esc_attr( $id ); ?>" data-nknm-tool="<?php echo esc_attr( $slug ); ?>" data-nknm-count="<?php echo esc_attr( (string) $count ); ?>" data-nknm-variants="<?php echo $tool['variants'] ? '1' : '0'; ?>">
 		<form class="nknm-form" novalidate>
 			<?php if ( $tool['name_input'] ) : ?>
 				<div class="nknm-field nknm-field--name">
@@ -94,6 +94,17 @@ function nknm_render_tool( $slug, $atts ) {
 		<div class="nknm-results" role="region" aria-label="<?php esc_attr_e( 'Generated names', 'nicknamerly-tools' ); ?>">
 			<ul class="nknm-grid" aria-live="polite">
 				<?php foreach ( $examples as $name ) : ?>
+					<?php if ( is_array( $name ) ) : ?>
+					<li class="nknm-item nknm-item--rich">
+						<div class="nknm-rich">
+							<span class="nknm-name-text"><?php echo esc_html( $name[0] ); ?></span>
+							<button type="button" class="nknm-kanji" data-nknm-copy="<?php echo esc_attr( $name[1] ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: name */ __( 'Copy %s', 'nicknamerly-tools' ), $name[1] ) ); ?>"><?php echo esc_html( $name[1] ); ?></button>
+							<span class="nknm-meaning"><?php echo esc_html( $name[2] ); ?></span>
+						</div>
+						<button type="button" class="nknm-copy" data-nknm-copy="<?php echo esc_attr( $name[0] ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: name */ __( 'Copy %s', 'nicknamerly-tools' ), $name[0] ) ); ?>"><?php esc_html_e( 'Copy', 'nicknamerly-tools' ); ?></button>
+					</li>
+					<?php continue; ?>
+					<?php endif; ?>
 					<li class="nknm-item">
 						<?php if ( $tool['variants'] ) : ?>
 							<button type="button" class="nknm-name" aria-expanded="false"><span class="nknm-name-text"><?php echo esc_html( $name ); ?></span></button>

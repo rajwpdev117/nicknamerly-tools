@@ -57,13 +57,14 @@
 		var tries = 0;
 		while (out.length < count && tries < count * 40) {
 			tries++;
-			var n = gen();
-			if (!n) continue;
-			n = n.replace(/\s+/g, ' ').trim();
+			var g = gen();
+			if (!g) continue;
+			var rich = typeof g === 'object';
+			var n = (rich ? g.t : g).replace(/\s+/g, ' ').trim();
 			var k = n.toLowerCase();
-			if (n.length < 2 || n.length > 32 || seen[k]) continue;
+			if (n.length < 2 || n.length > 40 || seen[k]) continue;
 			seen[k] = true;
-			out.push(n);
+			if (rich) { g.t = n; out.push(g); } else { out.push(n); }
 		}
 		return out;
 	};
@@ -127,7 +128,40 @@
 		});
 	};
 
+	/** Rich result {t: name, k: kanji, m: meaning}: two-line card with a separate kanji copy button. */
+	function buildRichItem(r) {
+		var li = document.createElement('li');
+		li.className = 'nknm-item nknm-item--rich';
+		var body = document.createElement('div');
+		body.className = 'nknm-rich';
+		var t = document.createElement('span');
+		t.className = 'nknm-name-text';
+		t.textContent = r.t;
+		var k = document.createElement('button');
+		k.type = 'button';
+		k.className = 'nknm-kanji';
+		k.setAttribute('data-nknm-copy', r.k);
+		k.setAttribute('aria-label', 'Copy ' + r.k);
+		k.textContent = r.k;
+		var m = document.createElement('span');
+		m.className = 'nknm-meaning';
+		m.textContent = r.m;
+		body.appendChild(t);
+		body.appendChild(k);
+		body.appendChild(m);
+		var btn = document.createElement('button');
+		btn.type = 'button';
+		btn.className = 'nknm-copy';
+		btn.setAttribute('data-nknm-copy', r.t);
+		btn.setAttribute('aria-label', 'Copy ' + r.t);
+		btn.textContent = 'Copy';
+		li.appendChild(body);
+		li.appendChild(btn);
+		return li;
+	}
+
 	function buildItem(name, withVariants) {
+		if (typeof name === 'object') return buildRichItem(name);
 		var li = document.createElement('li');
 		li.className = 'nknm-item';
 		var span = document.createElement(withVariants ? 'button' : 'span');
@@ -230,7 +264,7 @@
 			grid.appendChild(frag);
 			void grid.offsetWidth; // restart the entry animation
 			grid.classList.add('is-fresh');
-			shown = names;
+			shown = names.map(function (n) { return typeof n === 'object' ? n.t : n; });
 			if (status) status.textContent = names.length + ' new names generated.';
 		}
 
@@ -275,7 +309,7 @@
 			var blob = new Blob([shown.join('\n') + '\n'], { type: 'text/plain' });
 			var a = document.createElement('a');
 			a.href = URL.createObjectURL(blob);
-			a.download = (slug === 'lastname' ? 'last-names' : 'random-names') + '.txt';
+			a.download = (slug === 'lastname' ? 'last-names' : slug === 'random' ? 'random-names' : slug + '-names') + '.txt';
 			document.body.appendChild(a);
 			a.click();
 			document.body.removeChild(a);

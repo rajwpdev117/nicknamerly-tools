@@ -48,6 +48,7 @@ function nknm_register_tool( $slug, $args ) {
 				'bulk'             => false,
 				'name2_label'      => '',
 				'name2_placeholder' => '',
+				'rich'             => false,
 		)
 	);
 }
