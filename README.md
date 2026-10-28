@@ -13,6 +13,7 @@ Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): 
 | `[ship_name_generator]` | Ship name generator (blend two names) |
 | `[japanese_name_generator]` | Japanese name generator (romaji, kanji and meaning) |
 | `[character_name_generator]` | Character name generator (genre, gender, starting letter) |
+| `[band_name_generator]` | Band name generator (genre, optional word) |
 | `[gamertag_generator]` | Gamertag generator (Xbox and PlayStation length limits) |
 
 ## Install

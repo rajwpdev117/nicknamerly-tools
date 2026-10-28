@@ -13,7 +13,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'NKNM_VERSION', '1.9.0' );
+define( 'NKNM_VERSION', '1.10.0' );
 define( 'NKNM_FILE', __FILE__ );
 define( 'NKNM_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NKNM_URL', plugin_dir_url( __FILE__ ) );
@@ -28,7 +28,7 @@ require_once NKNM_DIR . 'includes/layout.php';
  * plus assets/js/data/<slug>-data.js and assets/js/tools/<slug>.js, then list it here.
  */
 function nknm_load_tools() {
-	foreach ( array( 'nickname', 'username', 'random', 'lastname', 'ship', 'japanese', 'gamertag', 'character' ) as $nknm_slug ) {
+	foreach ( array( 'nickname', 'username', 'random', 'lastname', 'ship', 'japanese', 'gamertag', 'character', 'band' ) as $nknm_slug ) {
 		require_once NKNM_DIR . 'includes/tools/' . $nknm_slug . '.php';
 	}
 }
