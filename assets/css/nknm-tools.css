@@ -223,7 +223,7 @@
 .nknm-tool .nknm-chip:focus { outline: none; }
 .nknm-tool .nknm-chip:focus-visible { outline: 3px solid var(--nknm-accent); outline-offset: 2px; }
 .nknm-tool .nknm-chip.is-copied,
-.nknm-tool .nknm-chip.is-copied:hover { background-color: var(--nknm-accent) !important; border-color: var(--nknm-accent); color: #fff !important; }
+.nknm-tool .nknm-chip.is-copied:hover { background-color: var(--nknm-accent-hover) !important; border-color: var(--nknm-accent-hover); color: #fff !important; }
 .nknm-tool .nknm-hint { margin: 12px 0 0; text-align: center; font-size: 14px; color: var(--nknm-muted); }
 .nknm-tool .nknm-copy {
 	flex: none;
@@ -238,7 +238,7 @@
 }
 .nknm-tool .nknm-copy:hover { background-color: var(--nknm-primary) !important; color: #fff !important; }
 .nknm-tool .nknm-copy.is-copied,
-.nknm-tool .nknm-copy.is-copied:hover { background-color: var(--nknm-accent) !important; color: #fff !important; }
+.nknm-tool .nknm-copy.is-copied:hover { background-color: var(--nknm-accent-hover) !important; color: #fff !important; }
 
 .nknm-tool .nknm-grid.is-fresh .nknm-item { animation: nknm-in .2s ease both; }
 @keyframes nknm-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }

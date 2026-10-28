@@ -116,7 +116,7 @@ body.nknm-front .comments-area, body.nknm-front .entry-meta, body.nknm-front foo
 .nknm-sec .nknm-band p { margin: 0; color: #ddd6fe; }
 .nknm-band .wp-block-buttons { flex: 0 1 auto; min-width: min(260px, 100%); max-width: 100%; margin: 0; }
 .nknm-band .wp-block-button { width: 100%; max-width: 100%; }
-.nknm-band .wp-block-button__link { display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; height: auto; min-height: 52px; padding: 14px 24px; line-height: 1.2; white-space: normal; overflow-wrap: anywhere; text-wrap: balance; text-align: center; border-radius: 12px; background: var(--nknm-accent) !important; color: #fff !important; font-weight: 800; text-decoration: none; }
+.nknm-band .wp-block-button__link { display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; height: auto; min-height: 52px; padding: 14px 24px; line-height: 1.2; white-space: normal; overflow-wrap: anywhere; text-wrap: balance; text-align: center; border-radius: 12px; background: #db2777 !important; color: #fff !important; font-weight: 800; text-decoration: none; }
 .nknm-band .wp-block-button__link:hover { background: #db2777 !important; }
 
 /* Tips */
@@ -139,3 +139,4 @@ body.nknm-front .comments-area, body.nknm-front .entry-meta, body.nknm-front foo
 	.nknm-band { padding: 24px; }
 	.nknm-band .wp-block-buttons { flex: 1 1 100%; }
 }
+.nknm-band .wp-block-button__link:hover, .nknm-band .wp-block-button__link:focus-visible { background: #be185d !important; }
