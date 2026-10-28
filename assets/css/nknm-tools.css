@@ -406,3 +406,6 @@
 	.nknm-tool .nknm-style, .nknm-tool .nknm-keep, .nknm-tool .nknm-btn--primary { transition: none; }
 	.nknm-tool .nknm-style:hover, .nknm-tool .nknm-keep:hover, .nknm-tool .nknm-btn--primary:hover { transform: none; }
 }
+
+/* Character names are two or three words: give each result a wider cell */
+.nknm-tool[data-nknm-tool="character"] .nknm-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); }
