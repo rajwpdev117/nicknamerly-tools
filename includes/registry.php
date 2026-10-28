@@ -49,6 +49,7 @@ function nknm_register_tool( $slug, $args ) {
 				'name2_label'      => '',
 				'name2_placeholder' => '',
 				'rich'             => false,
+				'genders_label'    => '',
 		)
 	);
 }

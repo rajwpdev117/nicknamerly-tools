@@ -1,6 +1,6 @@
 # Nicknamerly Tools
 
-Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): free nickname, username, random name, last name, ship name and Japanese name generators. Each tool is a shortcode, runs in the browser (no tracking, no sign-up) and loads its assets only on pages that use it.
+Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): free nickname, username, random name, last name, ship name, Japanese name and gamertag generators. Each tool is a shortcode, runs in the browser (no tracking, no sign-up) and loads its assets only on pages that use it.
 
 ## Tools
 
@@ -12,6 +12,7 @@ Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): 
 | `[last_name_generator]` | Last name generator (US and fantasy surnames) |
 | `[ship_name_generator]` | Ship name generator (blend two names) |
 | `[japanese_name_generator]` | Japanese name generator (romaji, kanji and meaning) |
+| `[gamertag_generator]` | Gamertag generator (Xbox and PlayStation length limits) |
 
 ## Install
 

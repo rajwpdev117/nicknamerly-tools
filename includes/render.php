@@ -70,7 +70,7 @@ function nknm_render_tool( $slug, $atts ) {
 			<?php endif; ?>
 			<?php if ( $tool['genders'] ) : ?>
 				<div class="nknm-field nknm-field--gender">
-					<label for="<?php echo esc_attr( $id ); ?>-gender"><?php esc_html_e( 'Gender', 'nicknamerly-tools' ); ?></label>
+					<label for="<?php echo esc_attr( $id ); ?>-gender"><?php echo esc_html( $tool['genders_label'] ? $tool['genders_label'] : __( 'Gender', 'nicknamerly-tools' ) ); ?></label>
 					<select id="<?php echo esc_attr( $id ); ?>-gender" name="nknm_gender">
 						<?php foreach ( $tool['genders'] as $value => $label ) : ?>
 							<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
