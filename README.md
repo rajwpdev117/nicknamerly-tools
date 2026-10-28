@@ -22,7 +22,7 @@ Download `nicknamerly-tools.zip` from the [latest release](https://github.com/ra
 2. Push to `main`.
 3. The GitHub Action tags `vX.Y.Z`, builds the zip and publishes the release. WordPress picks it up within about 12 hours (or click "Check for updates").
 
-Built on [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) (MIT), bundled in `lib/`.
+Built with [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) (MIT), bundled in `lib/`.
 
 ## Data sources
 
