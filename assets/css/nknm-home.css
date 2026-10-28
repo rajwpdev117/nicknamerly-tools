@@ -1,0 +1,141 @@
+/* Nicknamerly homepage blocks. Loaded only on pages that contain the "nknm-hero" block group. */
+/* WordPress wraps group blocks in an inner container on classic themes; make it invisible to the layout. */
+.nknm-hero > .wp-block-group__inner-container,
+.nknm-sec > .wp-block-group__inner-container,
+.nknm-steps > .wp-block-group__inner-container,
+.nknm-step > .wp-block-group__inner-container,
+.nknm-cards > .wp-block-group__inner-container,
+.nknm-card > .wp-block-group__inner-container,
+.nknm-band > .wp-block-group__inner-container,
+.nknm-band-text > .wp-block-group__inner-container { display: contents; }
+
+body.nknm-front {
+	--nknm-primary: #6d28d9;
+	--nknm-accent: #ec4899;
+	--nknm-ink: #1e1b2e;
+	--nknm-muted: #4b4560;
+	--nknm-soft: #f5f3ff;
+	--nknm-border: #e4def5;
+	overflow-x: clip;
+	color: var(--nknm-ink);
+}
+/* Let the page content use the full width and drop the theme's article padding */
+body.nknm-front .inside-article,
+body.nknm-front .site-content .content-area .inside-article { padding: 0; background: transparent; box-shadow: none; }
+body.nknm-front .entry-content { margin: 0; }
+body.nknm-front .entry-content > * { margin-block-start: 0; }
+body.nknm-front .site-main > * { margin-bottom: 0; }
+body.nknm-front .separate-containers .inside-article { padding: 0; }
+body.nknm-front .comments-area, body.nknm-front .entry-meta, body.nknm-front footer.entry-meta { display: none; }
+
+/* Hero (full-bleed) */
+.nknm-hero {
+	box-sizing: border-box;
+	width: auto;
+	max-width: none !important;
+	margin: 0 !important;
+	padding: 56px 24px 64px;
+	background: var(--nknm-soft);
+	text-align: center;
+}
+.nknm-hero > *,
+.nknm-hero > .wp-block-group__inner-container > * { max-width: 1000px; margin-left: auto; margin-right: auto; }
+.nknm-hero .nknm-badge {
+	display: inline-block;
+	margin: 0 auto 18px;
+	padding: 6px 14px;
+	border: 1px solid var(--nknm-border);
+	border-radius: 999px;
+	background: #fff;
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--nknm-primary);
+}
+.nknm-hero h1 {
+	margin: 0 auto 18px;
+	font-family: "Nunito", system-ui, sans-serif;
+	font-size: clamp(36px, 6vw, 56px);
+	line-height: 1.1;
+	font-weight: 900;
+	letter-spacing: -1px;
+	color: var(--nknm-ink);
+}
+.nknm-hero .nknm-lead { max-width: 640px; margin: 0 auto 32px; font-size: 19px; line-height: 1.55; color: var(--nknm-muted); }
+.nknm-hero .nknm-tool {
+	margin: 0 auto;
+	padding: 22px;
+	border-radius: 22px;
+	background: #fff;
+	box-shadow: 0 12px 40px rgba(76, 29, 149, 0.10);
+	text-align: left;
+}
+.nknm-hero .nknm-tool .nknm-item { background: #fff; }
+.nknm-hero .nknm-tool .nknm-item.is-open { background: var(--nknm-soft); }
+.nknm-hero .nknm-tool .nknm-item.is-open .nknm-copy { background-color: #fff !important; }
+.nknm-checks { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin-top: 22px !important; margin-bottom: 0; padding: 0; list-style: none; font-size: 15px; font-weight: 600; color: var(--nknm-muted); }
+.nknm-checks li { position: relative; margin: 0; padding-left: 26px; }
+.nknm-checks li::before {
+	content: "";
+	position: absolute; left: 0; top: .35em;
+	width: 16px; height: 9px;
+	border-left: 3px solid var(--nknm-primary); border-bottom: 3px solid var(--nknm-primary);
+	transform: rotate(-45deg) scale(.9); transform-origin: center;
+}
+
+/* Sections */
+.nknm-sec { box-sizing: border-box; max-width: 1000px !important; margin: 0 auto !important; padding: 56px 24px 8px; }
+.nknm-sec:last-child { padding-bottom: 72px; }
+.nknm-sec h2 { margin: 0 0 14px; font-family: "Nunito", system-ui, sans-serif; font-size: 32px; line-height: 1.2; font-weight: 900; color: var(--nknm-ink); }
+.nknm-sec h3 { margin: 0 0 8px; font-size: 20px; font-weight: 800; color: var(--nknm-ink); }
+.nknm-sec p { margin: 0 0 14px; line-height: 1.65; color: var(--nknm-muted); }
+
+.nknm-steps, .nknm-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; margin-top: 22px; }
+.nknm-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+.nknm-cards--tools { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.nknm-step { padding: 22px; border-radius: 18px; background: var(--nknm-soft); }
+.nknm-step h3 { margin-bottom: 6px; }
+.nknm-step p:last-child { margin: 0; }
+.nknm-sec .nknm-num { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin: 0 0 10px; border-radius: 50%; background: var(--nknm-primary); color: #fff; font-weight: 800; }
+.nknm-card { padding: 22px; border: 1px solid var(--nknm-border); border-radius: 18px; background: #fff; }
+.nknm-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.nknm-pills li { margin: 0; padding: 6px 12px; border-radius: 999px; background: var(--nknm-soft); font-size: 15px; font-weight: 600; color: var(--nknm-ink); }
+.nknm-toolcard .nknm-toolname { margin: 0 0 6px; font-size: 19px; font-weight: 800; }
+.nknm-toolcard .nknm-toolname a { color: var(--nknm-primary); text-decoration: none; }
+.nknm-toolcard p:last-child { margin: 0; font-size: 15px; }
+
+/* Table */
+.nknm-sec .nknm-table { margin: 18px 0 0; overflow-x: auto; border: 1px solid var(--nknm-border); border-radius: 16px; }
+.nknm-table table { width: 100%; min-width: 640px; margin: 0; border: 0; border-collapse: collapse; font-size: 16px; }
+.nknm-table th { padding: 12px 16px; border: 0 !important; background: var(--nknm-soft); text-align: left; font-weight: 800; color: var(--nknm-ink); }
+.nknm-table td { padding: 12px 16px; border: 0; border-top: 1px solid #ece8f7 !important; color: var(--nknm-ink); }
+
+/* Dark band */
+.nknm-band { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; padding: 32px; border-radius: 22px; background: #1e1b2e; }
+.nknm-band-text { flex: 999 1 420px; min-width: 0; }
+.nknm-sec .nknm-band h2 { color: #fff; font-size: 30px; }
+.nknm-sec .nknm-band p { margin: 0; color: #ddd6fe; }
+.nknm-band .wp-block-buttons { flex: 0 1 auto; min-width: min(260px, 100%); max-width: 100%; margin: 0; }
+.nknm-band .wp-block-button { width: 100%; max-width: 100%; }
+.nknm-band .wp-block-button__link { display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; height: auto; min-height: 52px; padding: 14px 24px; line-height: 1.2; white-space: normal; overflow-wrap: anywhere; text-wrap: balance; text-align: center; border-radius: 12px; background: var(--nknm-accent) !important; color: #fff !important; font-weight: 800; text-decoration: none; }
+.nknm-band .wp-block-button__link:hover { background: #db2777 !important; }
+
+/* Tips */
+.nknm-tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 14px 28px; margin: 18px 0 0; padding: 0; list-style: none; }
+.nknm-tips li { position: relative; margin: 0; padding-left: 36px; line-height: 1.6; color: var(--nknm-muted); }
+.nknm-tips li::before { content: ""; position: absolute; left: 0; top: 2px; width: 24px; height: 24px; border-radius: 50%; background: var(--nknm-soft); }
+.nknm-tips li::after { content: ""; position: absolute; left: 8px; top: 8px; width: 9px; height: 5px; border-left: 2.5px solid var(--nknm-primary); border-bottom: 2.5px solid var(--nknm-primary); transform: rotate(-45deg); }
+.nknm-tips li strong { color: var(--nknm-ink); }
+
+/* FAQ */
+.nknm-sec .wp-block-details { margin: 0 0 10px; padding: 16px 20px; border: 1px solid var(--nknm-border); border-radius: 14px; background: #fff; }
+.nknm-sec .wp-block-details summary { cursor: pointer; font-size: 18px; font-weight: 800; color: var(--nknm-ink); }
+.nknm-sec .wp-block-details p { margin: 10px 0 0; }
+
+
+@media (max-width: 600px) {
+	.nknm-hero { padding: 40px 16px 48px; }
+	.nknm-sec { padding-left: 16px; padding-right: 16px; }
+	.nknm-sec h2 { font-size: 27px; }
+	.nknm-band { padding: 24px; }
+	.nknm-band .wp-block-buttons { flex: 1 1 100%; }
+}

@@ -1,0 +1,51 @@
+name: Release plugin zip
+
+# Push to main with a new "Version:" in nicknamerly-tools.php and this
+# workflow tags it, builds nicknamerly-tools.zip and publishes a GitHub Release.
+# The WordPress site then sees the update on its own.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read version
+        id: v
+        run: |
+          VERSION=$(grep -m1 -E '^\s*\*\s*Version:' nicknamerly-tools.php | sed -E 's/.*Version:\s*//; s/\s+$//')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check PHP syntax
+        if: steps.v.outputs.exists == 'false'
+        run: find . -name '*.php' -not -path './lib/*' -print0 | xargs -0 -n1 php -l
+
+      - name: Build zip
+        if: steps.v.outputs.exists == 'false'
+        run: |
+          mkdir -p build/nicknamerly-tools
+          rsync -a --exclude '.git' --exclude '.github' --exclude 'build' --exclude '*.zip' --exclude 'README.md' ./ build/nicknamerly-tools/
+          (cd build && zip -rq ../nicknamerly-tools.zip nicknamerly-tools)
+
+      - name: Create release
+        if: steps.v.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "v${{ steps.v.outputs.version }}" nicknamerly-tools.zip \
+            --title "v${{ steps.v.outputs.version }}" \
+            --generate-notes \
+            --target "$GITHUB_SHA"
