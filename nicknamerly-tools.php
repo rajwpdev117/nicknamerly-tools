@@ -3,7 +3,7 @@
  * Plugin Name:       Nicknamerly Tools
  * Plugin URI:        https://nicknamerly.com/
  * Description:       Lightweight nickname and username generators for Nicknamerly. Each tool is a shortcode, e.g. [nickname_generator]. Assets load only on pages that use a tool.
- * Version:           1.9.0
+ * Version:           1.10.0
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Author:            Nicknamerly
