@@ -39,7 +39,7 @@ body.nknm-front .comments-area, body.nknm-front .entry-meta, body.nknm-front foo
 	text-align: center;
 }
 .nknm-hero > *,
-.nknm-hero > .wp-block-group__inner-container > * { max-width: 1000px; margin-left: auto; margin-right: auto; }
+.nknm-hero > .wp-block-group__inner-container > * { max-width: 1120px; margin-left: auto; margin-right: auto; }
 .nknm-hero .nknm-badge {
 	display: inline-block;
 	margin: 0 auto 18px;
@@ -88,6 +88,13 @@ body.nknm-front .comments-area, body.nknm-front .entry-meta, body.nknm-front foo
 .nknm-sec h2 { margin: 0 0 14px; font-family: "Nunito", system-ui, sans-serif; font-size: 32px; line-height: 1.2; font-weight: 900; color: var(--nknm-ink); }
 .nknm-sec h3 { margin: 0 0 8px; font-size: 20px; font-weight: 800; color: var(--nknm-ink); }
 .nknm-sec p { margin: 0 0 14px; line-height: 1.65; color: var(--nknm-muted); }
+/* Align page content with the header (GeneratePress 1200px container, 40px padding) and keep prose line length readable. */
+@media (min-width: 769px) {
+	.nknm-sec { max-width: 1200px !important; padding-left: 40px; padding-right: 40px; }
+	.nknm-hero .nknm-lead { max-width: 640px; }
+	.nknm-sec p { max-width: 860px; }
+	.nknm-sec .nknm-band p, .nknm-sec .nknm-card p { max-width: none; }
+}
 
 .nknm-steps, .nknm-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; margin-top: 22px; }
 .nknm-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
