@@ -11,8 +11,8 @@ body.nknm-blogpage {
 	--nkb-soft2: #ede9fe;
 	--nkb-line: #e7e2f6;
 	overflow-x: clip;
+	--nkb-text: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	color: var(--nkb-ink);
-	font-family: Nunito, system-ui, sans-serif;
 }
 /* Full width page: drop the theme's article padding, title, meta and comments */
 .nknm-post .inside-article,
@@ -29,7 +29,13 @@ body.nknm-blogpage {
 .nknm-post .site-content,
 .nknm-blogpage .site-content { display: block; }
 
-.nkb-wrap { box-sizing: border-box; width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.nkb-wrap { box-sizing: border-box; width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; font-family: Nunito, system-ui, sans-serif; }
+/* Plain reading text uses the site's regular font (Nunito is only loaded in bold weights) */
+.nkb-sub, .nkb-bsub, .nkb-article p, .nkb-article li, .nkb-mini-p, .nkb-card-d, .nkb-feat-d, .nkb-gd, .nkb-cta-d { font-family: var(--nkb-text); }
+/* Full-bleed bands inside the theme's centered container */
+.nkb-hero, .nkb-related, .nkb-bhero, .nkb-cta { width: 100vw; position: relative; left: 50%; margin-left: -50vw; box-sizing: border-box; }
+/* The theme's own featured image would repeat the hero */
+.nknm-post .featured-image, .nknm-post .page-header-image-single, .nknm-post .post-image { display: none !important; }
 
 /* Reading progress */
 .nkb-bar { position: fixed; top: 0; left: 0; right: 0; height: 5px; background: transparent; z-index: 9999; pointer-events: none; }
