@@ -168,3 +168,14 @@ body.nknm-blogpage {
 
 @media (prefers-reduced-motion: reduce) { .nkb-card, .nkb-gcard, .nkb-bar span { transition: none; } .nkb-card:hover, .nkb-gcard:hover { transform: none; } }
 .nknm-post .site-main, .nknm-post .inside-article, .nknm-blogpage .inside-article { margin-top: 0; padding-top: 0; }
+@media (min-width: 861px) {
+	.nkb-feat { flex-wrap: nowrap; }
+	.nkb-feat-media { flex: 0 0 58%; aspect-ratio: auto; }
+	.nkb-feat-img { object-position: left center; }
+	.nkb-feat-body { flex: 1 1 0; min-width: 0; padding: 30px 36px; }
+	.nkb-feat-d { font-size: 16px; margin-bottom: 16px; }
+	.nkb-feat-t { margin: 12px 0 10px; }
+}
+@media (max-width: 860px) {
+	.nkb-feat-media { flex: 1 1 100%; aspect-ratio: 1200 / 630; }
+}
