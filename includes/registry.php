@@ -38,6 +38,7 @@ function nknm_register_tool( $slug, $args ) {
 			'label'            => __( 'Generate', 'nicknamerly-tools' ),
 			'styles'           => array(),
 			'name_input'       => false,
+			'data'             => '',
 			'name_label'       => __( 'Your name (optional)', 'nicknamerly-tools' ),
 			'name_placeholder' => '',
 			'examples'         => array(),
@@ -67,9 +68,13 @@ function nknm_register_assets() {
 
 	wp_register_script( 'nknm-core', NKNM_URL . 'assets/js/nknm-core.js', array(), NKNM_VERSION, $script_args );
 
-	foreach ( array_keys( nknm_tools() ) as $slug ) {
-		wp_register_script( "nknm-data-{$slug}", NKNM_URL . "assets/js/data/{$slug}-data.js", array(), NKNM_VERSION, $script_args );
-		wp_register_script( "nknm-tool-{$slug}", NKNM_URL . "assets/js/tools/{$slug}.js", array( 'nknm-core', "nknm-data-{$slug}" ), NKNM_VERSION, $script_args );
+	foreach ( nknm_tools() as $slug => $tool ) {
+		// A tool may reuse another tool's word lists via the 'data' option.
+		$data = ! empty( $tool['data'] ) ? $tool['data'] : $slug;
+		if ( ! wp_script_is( "nknm-data-{$data}", 'registered' ) ) {
+			wp_register_script( "nknm-data-{$data}", NKNM_URL . "assets/js/data/{$data}-data.js", array(), NKNM_VERSION, $script_args );
+		}
+		wp_register_script( "nknm-tool-{$slug}", NKNM_URL . "assets/js/tools/{$slug}.js", array( 'nknm-core', "nknm-data-{$data}" ), NKNM_VERSION, $script_args );
 	}
 }
 
