@@ -16,6 +16,7 @@ Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): 
 | `[band_name_generator]` | Band name generator (genre, optional word) |
 | `[superhero_name_generator]` | Superhero name generator (power type, style, optional word) |
 | `[pen_name_generator]` | Pen name generator (genre, gender, starting letter) |
+| `[rap_name_generator]` | Rap name generator (style, optional name) |
 | `[gamertag_generator]` | Gamertag generator (Xbox and PlayStation length limits) |
 
 ## Install
