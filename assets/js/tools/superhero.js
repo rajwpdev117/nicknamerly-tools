@@ -33,8 +33,10 @@
 			if ((g === 'female' && maleT) || (g === 'male' && femT)) t = 'Captain';
 			return t + ' ' + n;
 		}
-		if (r < 0.90) var n2 = NKNM.pick(d.n);
+		if (r < 0.90) {
+			var n2 = NKNM.pick(d.n);
 			return (n2 === n ? a : n) + ' ' + n2;
+		}
 		return a + ' ' + suffix(g);
 	}
 
