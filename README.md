@@ -14,6 +14,7 @@ Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): 
 | `[japanese_name_generator]` | Japanese name generator (romaji, kanji and meaning) |
 | `[character_name_generator]` | Character name generator (genre, gender, starting letter) |
 | `[band_name_generator]` | Band name generator (genre, optional word) |
+| `[superhero_name_generator]` | Superhero name generator (power type, style, optional word) |
 | `[gamertag_generator]` | Gamertag generator (Xbox and PlayStation length limits) |
 
 ## Install
