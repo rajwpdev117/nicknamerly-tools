@@ -19,6 +19,7 @@ Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): 
 | `[rap_name_generator]` | Rap name generator (style, optional name) |
 | `[female_name_generator]` | Female name generator (popularity, first or full, starting letter) |
 | `[male_name_generator]` | Male name generator (same options) |
+| `[aesthetic_username_generator]` | Aesthetic username generator (aesthetic, format, optional word) |
 | `[gamertag_generator]` | Gamertag generator (Xbox and PlayStation length limits) |
 
 ## Install
