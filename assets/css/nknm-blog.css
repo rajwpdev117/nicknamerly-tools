@@ -179,3 +179,14 @@ body.nknm-blogpage {
 @media (max-width: 860px) {
 	.nkb-feat-media { flex: 1 1 100%; aspect-ratio: 1200 / 630; }
 }
+/* v1.16.4: keep text colours on hover (theme link hover colour was dark on the dark card) */
+.nkb-feat, .nkb-feat:hover, .nkb-feat:focus { color: #fff; }
+.nkb-feat:hover .nkb-feat-t, .nkb-feat:focus .nkb-feat-t { color: #fff; }
+.nkb-feat:hover .nkb-feat-d, .nkb-feat:focus .nkb-feat-d { color: #d8d3ee; }
+.nkb-feat:hover .nkb-feat-go, .nkb-feat:focus .nkb-feat-go { color: #f9a8d4; }
+.nkb-gcard, .nkb-gcard:hover, .nkb-gcard:focus { color: var(--nkb-ink); }
+.nkb-gcard:hover .nkb-gt { color: var(--nkb-purple); }
+/* v1.16.4: closing call-to-action as a contained card, not a full-width band */
+.nkb-cta { width: auto; left: auto; margin: 16px 0 56px; padding: 0; background: transparent; }
+.nkb-cta-in { padding: 40px 48px; border-radius: 28px; background: var(--nkb-ink); }
+@media (max-width: 640px) { .nkb-cta-in { padding: 28px 24px; } }
