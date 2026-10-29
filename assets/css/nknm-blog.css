@@ -190,3 +190,4 @@ body.nknm-blogpage {
 .nkb-cta { width: auto; left: auto; margin: 16px 0 56px; padding: 0; background: transparent; }
 .nkb-cta-in { padding: 40px 48px; border-radius: 28px; background: var(--nkb-ink); }
 @media (max-width: 640px) { .nkb-cta-in { padding: 28px 24px; } }
+.nkb-cta-in { width: calc(100% - 48px); max-width: 1112px; }
