@@ -21,6 +21,7 @@ Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): 
 | `[male_name_generator]` | Male name generator (same options) |
 | `[aesthetic_username_generator]` | Aesthetic username generator (aesthetic, format, optional word) |
 | `[gamertag_generator]` | Gamertag generator (Xbox and PlayStation length limits) |
+| `[discord_username_generator]` | Discord username generator (style, format, optional word; lowercase, Discord-valid characters) |
 
 ## Install
 
