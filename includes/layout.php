@@ -104,7 +104,7 @@ add_action(
 			. '.main-navigation .main-nav ul li.nknm-mega:hover>ul.sub-menu,.main-navigation .main-nav ul li.nknm-mega.sfHover>ul.sub-menu,.main-navigation .main-nav ul li.nknm-mega:focus-within>ul.sub-menu{left:auto;right:0}'
 			. '}'
 			. '@media(min-width:769px) and (max-width:1000px){'
-			. '.main-navigation .main-nav ul li.nknm-mega>ul.sub-menu{grid-auto-columns:minmax(0,1fr);width:calc(100vw - 32px)}'
+			. '.main-navigation .main-nav ul li.nknm-mega>ul.sub-menu{grid-auto-columns:minmax(0,1fr);width:calc(100vw - 80px)}'
 			. '.main-navigation .main-nav ul li.nknm-mega>ul.sub-menu li a{white-space:normal}'
 			. '}'
 			. 'body:not(.nknm-front) .site-content{display:block}'
