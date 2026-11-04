@@ -130,3 +130,16 @@ add_action(
 	},
 	20
 );
+
+/** Names mega menu: group labels are custom-link items saved with "#"; render them without a link so they are plain text. */
+add_filter(
+	'nav_menu_link_attributes',
+	function ( $atts, $item ) {
+		if ( in_array( 'nknm-mega-label', (array) $item->classes, true ) ) {
+			unset( $atts['href'] );
+		}
+		return $atts;
+	},
+	10,
+	2
+);
