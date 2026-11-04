@@ -22,6 +22,7 @@ Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): 
 | `[aesthetic_username_generator]` | Aesthetic username generator (aesthetic, format, optional word) |
 | `[gamertag_generator]` | Gamertag generator (Xbox and PlayStation length limits) |
 | `[discord_username_generator]` | Discord username generator (style, format, optional word; lowercase, Discord-valid characters) |
+| `[roblox_username_generator]` | Roblox username generator (style, format, optional word; 3-20 characters, one underscore at most) |
 
 ## Install
 
