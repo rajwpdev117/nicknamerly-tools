@@ -40,6 +40,14 @@ nknm_register_tool(
 			array( 'Mio Hayashi', '林澪', 'Mio = waterway, channel · Hayashi = woods' ),
 			array( 'Sota Matsumoto', '松本蒼太', 'Sota = blue + strong · Matsumoto = pine + base' ),
 			array( 'Akari Shimizu', '清水明里', 'Akari = bright + village · Shimizu = clear + water' ),
+			array( 'Yuto Ito', '伊藤優斗', 'Yuto = gentle + big dipper · Ito = that one + wisteria' ),
+			array( 'Rin Watanabe', '渡辺凛', 'Rin = dignified, cool · Watanabe = cross over + area' ),
+			array( 'Daiki Yamada', '山田大輝', 'Daiki = great + radiance · Yamada = mountain + rice field' ),
+			array( 'Nanami Nakajima', '中島七海', 'Nanami = seven + sea · Nakajima = middle + island' ),
+			array( 'Haruki Saito', '斎藤陽輝', 'Haruki = sun + radiance · Saito = purify + wisteria' ),
+			array( 'Yuna Inoue', '井上結菜', 'Yuna = bond + greens · Inoue = well + above' ),
+			array( 'Koharu Kondo', '近藤心春', 'Koharu = heart + spring · Kondo = near + wisteria' ),
+			array( 'Sora Kimura', '木村空', 'Sora = sky · Kimura = tree + village' ),
 		),
 	)
 );
