@@ -99,7 +99,7 @@ add_action(
 			. '.main-navigation ul ul li.nknm-mega-label:hover>a{background:none;color:#6d28d9}'
 			. '@media(min-width:769px){'
 			. '.main-navigation .main-nav>ul>li.nknm-mega{position:static}'
-			. '.main-navigation .main-nav ul li.nknm-mega>ul.sub-menu{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,auto);grid-auto-columns:max-content;align-content:start;gap:2px 12px;width:max-content;max-width:calc(100vw - 32px);padding:12px 14px 14px}'
+			. '.main-navigation .main-nav ul li.nknm-mega>ul.sub-menu{display:grid;grid-auto-flow:column;grid-template-rows:repeat(8,auto);grid-auto-columns:max-content;align-content:start;gap:2px 12px;width:max-content;max-width:calc(100vw - 32px);padding:12px 14px 14px}'
 			. '.main-navigation .main-nav ul li.nknm-mega>ul.sub-menu>li.nknm-mega-label{grid-row:1}'
 			. '.main-navigation .main-nav ul li.nknm-mega:hover>ul.sub-menu,.main-navigation .main-nav ul li.nknm-mega.sfHover>ul.sub-menu,.main-navigation .main-nav ul li.nknm-mega:focus-within>ul.sub-menu{left:auto;right:0}'
 			. '}'
