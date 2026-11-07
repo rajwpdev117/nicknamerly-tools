@@ -3,7 +3,7 @@
  * Plugin Name:       Nicknamerly Tools
  * Plugin URI:        https://nicknamerly.com/
  * Description:       Lightweight nickname and username generators for Nicknamerly. Each tool is a shortcode, e.g. [nickname_generator]. Assets load only on pages that use a tool.
- * Version:           1.23.1
+ * Version:           1.24.0
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Author:            Nicknamerly
@@ -13,7 +13,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'NKNM_VERSION', '1.23.1' );
+define( 'NKNM_VERSION', '1.24.0' );
 define( 'NKNM_FILE', __FILE__ );
 define( 'NKNM_DIR', plugin_dir_path( __FILE__ ) );
 define( 'NKNM_URL', plugin_dir_url( __FILE__ ) );
@@ -22,6 +22,7 @@ require_once NKNM_DIR . 'includes/registry.php';
 require_once NKNM_DIR . 'includes/render.php';
 require_once NKNM_DIR . 'includes/layout.php';
 require_once NKNM_DIR . 'includes/blog.php';
+require_once NKNM_DIR . 'includes/analytics.php';
 
 /**
  * Load tool definitions on init (labels are translatable, so not earlier).
