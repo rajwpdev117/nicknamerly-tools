@@ -102,6 +102,7 @@ function nknm_related_tools( $slug ) {
 		'how-to-choose-a-good-username' => array( 'username', 'aesthetic', 'gamertag' ),
 		'how-to-choose-a-pen-name'      => array( 'pen', 'female', 'lastname' ),
 		'how-to-name-a-band'            => array( 'band', 'rap', 'username' ),
+		'how-to-pick-a-rap-name'        => array( 'rap', 'username', 'band' ),
 	);
 	$keys = isset( $map[ $slug ] ) ? $map[ $slug ] : array( 'nickname', 'username', 'gamertag' );
 	$out  = array();
@@ -117,6 +118,7 @@ function nknm_hero_chips( $slug ) {
 		'how-to-choose-a-good-username' => array( 'mint.orbit', 'ember_moss', 'lumen42', 'fable.willow' ),
 		'how-to-choose-a-pen-name'      => array( 'J. R. Hale', 'Mara Quill', 'Wren Ashby', 'E. L. Rowan' ),
 		'how-to-name-a-band'            => array( 'The Quiet Hours', 'Static Bloom', 'Paper Tigers', 'Low Tide Club' ),
+		'how-to-pick-a-rap-name'        => array( 'Quiet Storm', 'Neon Saint', 'Kid Vesper', 'J.R. Ember' ),
 	);
 	return isset( $map[ $slug ] ) ? $map[ $slug ] : array( 'bright.fox', 'Luna Vale', 'northwind', 'Pixel Moth' );
 }
