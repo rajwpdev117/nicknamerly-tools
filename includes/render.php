@@ -116,7 +116,9 @@ function nknm_render_tool( $slug, $atts ) {
 					<li class="nknm-item nknm-item--rich">
 						<div class="nknm-rich">
 							<span class="nknm-name-text"><?php echo esc_html( $name[0] ); ?></span>
+							<?php if ( '' !== $name[1] ) : ?>
 							<button type="button" class="nknm-kanji" data-nknm-copy="<?php echo esc_attr( $name[1] ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: name */ __( 'Copy %s', 'nicknamerly-tools' ), $name[1] ) ); ?>"><?php echo esc_html( $name[1] ); ?></button>
+							<?php endif; ?>
 							<span class="nknm-meaning"><?php echo esc_html( $name[2] ); ?></span>
 						</div>
 						<button type="button" class="nknm-copy" data-nknm-copy="<?php echo esc_attr( $name[0] ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: name */ __( 'Copy %s', 'nicknamerly-tools' ), $name[0] ) ); ?>"><?php esc_html_e( 'Copy', 'nicknamerly-tools' ); ?></button>

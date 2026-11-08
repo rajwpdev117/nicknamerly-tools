@@ -149,17 +149,20 @@
 		var t = document.createElement('span');
 		t.className = 'nknm-name-text';
 		t.textContent = r.t;
-		var k = document.createElement('button');
-		k.type = 'button';
-		k.className = 'nknm-kanji';
-		k.setAttribute('data-nknm-copy', r.k);
-		k.setAttribute('aria-label', 'Copy ' + r.k);
-		k.textContent = r.k;
+		var k = null;
+		if (r.k) {
+			k = document.createElement('button');
+			k.type = 'button';
+			k.className = 'nknm-kanji';
+			k.setAttribute('data-nknm-copy', r.k);
+			k.setAttribute('aria-label', 'Copy ' + r.k);
+			k.textContent = r.k;
+		}
 		var m = document.createElement('span');
 		m.className = 'nknm-meaning';
 		m.textContent = r.m;
 		body.appendChild(t);
-		body.appendChild(k);
+		if (k) body.appendChild(k);
 		body.appendChild(m);
 		var btn = document.createElement('button');
 		btn.type = 'button';

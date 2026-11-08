@@ -23,6 +23,7 @@ Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): 
 | `[gamertag_generator]` | Gamertag generator (Xbox and PlayStation length limits) |
 | `[discord_username_generator]` | Discord username generator (style, format, optional word; lowercase, Discord-valid characters) |
 | `[american_name_generator]` | American name generator (popularity, full/first/middle initial, starting letter; US SSA + Census data) |
+| `[elf_name_generator]` | Elf name generator (high, wood, dark, half-elf, Christmas; meanings and pronunciation; invented syllables) |
 | `[fake_name_generator]` | Fake name generator (realistic, common, uncommon, short, double surname; middle name or initial; US SSA + Census data; names only) |
 | `[discord_server_name_generator]` | Discord server name generator (server type, name shape, optional topic) |
 | `[city_name_generator]` | City name generator (setting: fantasy, medieval, sci-fi, modern US-style, dark fantasy; shape: one word, two words, "City of"; starting letter) |
