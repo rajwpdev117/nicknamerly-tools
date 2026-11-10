@@ -30,7 +30,7 @@ require_once NKNM_DIR . 'includes/analytics.php';
  * plus assets/js/data/<slug>-data.js and assets/js/tools/<slug>.js, then list it here.
  */
 function nknm_load_tools() {
-	foreach ( array( 'nickname', 'username', 'random', 'lastname', 'ship', 'japanese', 'gamertag', 'character', 'band', 'superhero', 'pen', 'rap', 'female', 'male', 'aesthetic', 'discord', 'roblox', 'email', 'american', 'discordserver', 'city', 'first', 'fake', 'elf' ) as $nknm_slug ) {
+	foreach ( array( 'nickname', 'username', 'random', 'lastname', 'ship', 'japanese', 'gamertag', 'character', 'band', 'superhero', 'pen', 'rap', 'female', 'male', 'aesthetic', 'discord', 'roblox', 'email', 'american', 'discordserver', 'city', 'first', 'fake', 'elf', 'tiefling' ) as $nknm_slug ) {
 		require_once NKNM_DIR . 'includes/tools/' . $nknm_slug . '.php';
 	}
 }
