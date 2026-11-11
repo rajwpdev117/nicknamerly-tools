@@ -14,7 +14,7 @@ window.NKNM_DATA = window.NKNM_DATA || {};
 			w('wood|wood thorne|thorne crest|crest moor|moor hall|hall veil|veil ward|ward mere|mere shade|shade holt|holt')
 		],
 		nb: [
-			w('Val|valley Mont|mountain Rav|raven Sang|blood Noir|black Lune|moon Ombre|shadow Nuit|night Rose|rose'),
+			w('Val|valley Mont|mountain Rav|raven Bois|wood Noir|black Lune|moon Ombre|shadow Nuit|night Rose|rose'),
 			w('court|court mere|lake ault|keep ville|town fort|fort mont|hill')
 		],
 		c: [
