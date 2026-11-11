@@ -25,6 +25,8 @@ Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): 
 | `[american_name_generator]` | American name generator (popularity, full/first/middle initial, starting letter; US SSA + Census data) |
 | `[elf_name_generator]` | Elf name generator (high, wood, dark, half-elf, Christmas; meanings and pronunciation; invented syllables) |
 | `[tiefling_name_generator]` | Tiefling name generator (infernal, virtue, infernal + virtue nickname, blend-in human names; meanings and pronunciation; invented syllables) |
+| `[dwarf_name_generator]` | Dwarf name generator (any, mountain, hill, duergar, clan names; meanings and pronunciation; invented syllables) |
+| `[dragonborn_name_generator]` | Dragonborn name generator (fire, frost, storm, venom clans; childhood nicknames; meanings and pronunciation; invented syllables) |
 | `[fake_name_generator]` | Fake name generator (realistic, common, uncommon, short, double surname; middle name or initial; US SSA + Census data; names only) |
 | `[discord_server_name_generator]` | Discord server name generator (server type, name shape, optional topic) |
 | `[city_name_generator]` | City name generator (setting: fantasy, medieval, sci-fi, modern US-style, dark fantasy; shape: one word, two words, "City of"; starting letter) |
