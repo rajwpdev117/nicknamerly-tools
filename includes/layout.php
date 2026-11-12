@@ -104,6 +104,7 @@ add_action(
 		$css  = '@font-face{font-family:"Nunito";font-style:normal;font-weight:800;font-display:swap;src:url("' . esc_url( $font . 'nunito-latin-800-normal.woff2' ) . '") format("woff2")}'
 			. '@font-face{font-family:"Nunito";font-style:normal;font-weight:900;font-display:swap;src:url("' . esc_url( $font . 'nunito-latin-900-normal.woff2' ) . '") format("woff2")}'
 			. 'body{background:#fff;color:#1e1b2e}'
+			. '.site-header .header-image{width:200px;height:47px;object-fit:contain}' /* fixed box = logo never changes header height while loading (CLS) */
 			. '.site-header{border-bottom:1px solid #ece8f7;box-shadow:none}'
 			. '.main-navigation .main-nav ul li a{font-size:15px;font-weight:600}'
 			. '.main-navigation ul ul{min-width:230px;background:#fff;border:1px solid #ece8f7;border-radius:12px;box-shadow:0 12px 28px rgba(30,27,46,.12);padding:6px;overflow:hidden}'
