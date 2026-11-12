@@ -82,6 +82,20 @@ add_filter(
 	}
 );
 
+/** Preload the two Nunito files so the headline does not jump when the font swaps in (keeps CLS at 0). */
+add_action(
+	'wp_head',
+	function () {
+		if ( is_admin() || is_feed() ) {
+			return;
+		}
+		foreach ( array( 'nunito-latin-900-normal.woff2', 'nunito-latin-800-normal.woff2' ) as $file ) {
+			echo '<link rel="preload" href="' . esc_url( NKNM_URL . 'assets/fonts/' . $file ) . '" as="font" type="font/woff2" crossorigin>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
+	},
+	3
+);
+
 /** Site-wide brand styles (font, white page, plain header/footer, readable text pages). Kept inline: it is tiny. */
 add_action(
 	'wp_enqueue_scripts',
