@@ -101,8 +101,8 @@ add_action(
 	'wp_enqueue_scripts',
 	function () {
 		$font = NKNM_URL . 'assets/fonts/';
-		$css  = '@font-face{font-family:"Nunito";font-style:normal;font-weight:800;font-display:swap;src:url("' . esc_url( $font . 'nunito-latin-800-normal.woff2' ) . '") format("woff2")}'
-			. '@font-face{font-family:"Nunito";font-style:normal;font-weight:900;font-display:swap;src:url("' . esc_url( $font . 'nunito-latin-900-normal.woff2' ) . '") format("woff2")}'
+		$css  = '@font-face{font-family:"Nunito";font-style:normal;font-weight:800;font-display:optional;src:url("' . esc_url( $font . 'nunito-latin-800-normal.woff2' ) . '") format("woff2")}'
+			. '@font-face{font-family:"Nunito";font-style:normal;font-weight:900;font-display:optional;src:url("' . esc_url( $font . 'nunito-latin-900-normal.woff2' ) . '") format("woff2")}'
 			. 'body{background:#fff;color:#1e1b2e}'
 			. '.site-header .header-image{width:200px;height:47px;object-fit:contain}' /* fixed box = logo never changes header height while loading (CLS) */
 			. '.site-header{border-bottom:1px solid #ece8f7;box-shadow:none}'
