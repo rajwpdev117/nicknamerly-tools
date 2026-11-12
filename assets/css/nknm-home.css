@@ -53,7 +53,7 @@ body.nknm-front .comments-area, body.nknm-front .entry-meta, body.nknm-front foo
 }
 .nknm-hero h1 {
 	margin: 0 auto 18px;
-	font-family: "Nunito", system-ui, sans-serif;
+	font-family: Nunito,"Nunito Fallback",system-ui, sans-serif;
 	font-size: clamp(36px, 6vw, 56px);
 	line-height: 1.1;
 	font-weight: 900;
@@ -85,7 +85,7 @@ body.nknm-front .comments-area, body.nknm-front .entry-meta, body.nknm-front foo
 /* Sections */
 .nknm-sec { box-sizing: border-box; max-width: 1000px !important; margin: 0 auto !important; padding: 56px 24px 8px; }
 .nknm-sec:last-child { padding-bottom: 72px; }
-.nknm-sec h2 { margin: 0 0 14px; font-family: "Nunito", system-ui, sans-serif; font-size: 32px; line-height: 1.2; font-weight: 900; color: var(--nknm-ink); }
+.nknm-sec h2 { margin: 0 0 14px; font-family: Nunito,"Nunito Fallback",system-ui, sans-serif; font-size: 32px; line-height: 1.2; font-weight: 900; color: var(--nknm-ink); }
 .nknm-sec h3 { margin: 0 0 8px; font-size: 20px; font-weight: 800; color: var(--nknm-ink); }
 .nknm-sec p { margin: 0 0 14px; line-height: 1.65; color: var(--nknm-muted); }
 /* Align page content with the header (GeneratePress 1200px container, 40px padding) and keep prose line length readable. */

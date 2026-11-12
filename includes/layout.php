@@ -103,6 +103,8 @@ add_action(
 		$font = NKNM_URL . 'assets/fonts/';
 		$css  = '@font-face{font-family:"Nunito";font-style:normal;font-weight:800;font-display:optional;src:url("' . esc_url( $font . 'nunito-latin-800-normal.woff2' ) . '") format("woff2")}'
 			. '@font-face{font-family:"Nunito";font-style:normal;font-weight:900;font-display:optional;src:url("' . esc_url( $font . 'nunito-latin-900-normal.woff2' ) . '") format("woff2")}'
+			. '@font-face{font-family:"Nunito Fallback";font-weight:800;size-adjust:100%;ascent-override:101.1%;descent-override:35.3%;line-gap-override:0%;src:local("Arial Bold"),local("Arial-BoldMT"),local("Liberation Sans Bold"),local("Arimo Bold"),local("Helvetica Bold")}'
+			. '@font-face{font-family:"Nunito Fallback";font-weight:900;size-adjust:102.4%;ascent-override:98.7%;descent-override:34.5%;line-gap-override:0%;src:local("Arial Bold"),local("Arial-BoldMT"),local("Liberation Sans Bold"),local("Arimo Bold"),local("Helvetica Bold")}'
 			. 'body{background:#fff;color:#1e1b2e}'
 			. '.site-header .header-image{width:200px;height:47px;object-fit:contain}' /* fixed box = logo never changes header height while loading (CLS) */
 			. '.site-header{border-bottom:1px solid #ece8f7;box-shadow:none}'
@@ -124,7 +126,7 @@ add_action(
 			. '}'
 			. 'body:not(.nknm-front) .site-content{display:block}'
 			. 'body:not(.nknm-front) .inside-article{box-sizing:border-box;max-width:820px;margin:0 auto;padding:48px 24px 64px;background:transparent}'
-			. 'body:not(.nknm-front) .entry-title,body:not(.nknm-front) .entry-content h2,body:not(.nknm-front) .entry-content h3{font-family:Nunito,system-ui,sans-serif;font-weight:900;line-height:1.2;color:#1e1b2e}'
+			. 'body:not(.nknm-front) .entry-title,body:not(.nknm-front) .entry-content h2,body:not(.nknm-front) .entry-content h3{font-family:Nunito,"Nunito Fallback",system-ui,sans-serif;font-weight:900;line-height:1.2;color:#1e1b2e}'
 			. 'body:not(.nknm-front) .entry-title{font-size:clamp(32px,5vw,44px);margin-bottom:24px}'
 			. 'body:not(.nknm-front) .entry-content h2{font-size:26px;margin:32px 0 10px}'
 			. 'body:not(.nknm-front) .entry-content p,body:not(.nknm-front) .entry-content li{line-height:1.7;color:#4b4560}'
@@ -136,7 +138,7 @@ add_action(
 			. '.nknm-foot{box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 32px;width:100%;max-width:1120px;margin:0 auto;padding:36px 24px;font-size:15px}'
 			. '.nknm-foot a{color:#ddd6fe;text-decoration:none}.nknm-foot a:hover{color:#fff;text-decoration:underline}'
 			. '.nknm-foot-brand{display:flex;align-items:center;gap:10px}'
-			. '.nknm-foot-word{font-family:Nunito,system-ui,sans-serif;font-size:21px;font-weight:900;color:#fff}.nknm-foot-word span:last-child{color:#c4b5fd}'
+			. '.nknm-foot-word{font-family:Nunito,"Nunito Fallback",system-ui,sans-serif;font-size:21px;font-weight:900;color:#fff}.nknm-foot-word span:last-child{color:#c4b5fd}'
 			. '.nknm-footer-links{display:flex;flex-wrap:wrap;gap:8px 22px}'
 			. '@media(max-width:600px){.nknm-foot{flex-direction:column;align-items:flex-start;padding:28px 16px}}';
 		wp_register_style( 'nknm-site', false, array(), NKNM_VERSION );
