@@ -412,6 +412,18 @@ renderTray();
 		if (styleEl) styleEl.addEventListener('change', generate);
 		if (genderEl) genderEl.addEventListener('change', generate);
 		if (countEl) countEl.addEventListener('change', generate);
+		// Banner links such as "Get random nicknames" point at #top. Besides scrolling up,
+		// clear the name fields and build a fresh random list (first tool on the page only).
+		if (!document.__nknmTopLink) {
+			document.__nknmTopLink = true;
+			document.addEventListener('click', function (e) {
+				var a = e.target && e.target.closest ? e.target.closest('a[href="#top"]') : null;
+				if (!a) return;
+				if (nameEl) nameEl.value = '';
+				if (name2El) name2El.value = '';
+				generate();
+			});
+		}
 		function flash(btn, text) {
 			var label = btn.getAttribute('data-label') || btn.textContent;
 			btn.setAttribute('data-label', label);
