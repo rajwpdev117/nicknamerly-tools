@@ -147,6 +147,10 @@ function nknm_render_tool( $slug, $atts ) {
 				<button type="button" class="nknm-btn nknm-btn--ghost" data-nknm-copyall><?php esc_html_e( 'Copy all', 'nicknamerly-tools' ); ?></button>
 				<button type="button" class="nknm-btn nknm-btn--ghost" data-nknm-download><?php esc_html_e( 'Download .txt', 'nicknamerly-tools' ); ?></button>
 			<?php endif; ?>
+			<?php if ( $tool['export'] ) : ?>
+				<button type="button" class="nknm-btn nknm-btn--ghost" data-nknm-export="csv"><?php esc_html_e( 'Download CSV', 'nicknamerly-tools' ); ?></button>
+				<button type="button" class="nknm-btn nknm-btn--ghost" data-nknm-export="json"><?php esc_html_e( 'Download JSON', 'nicknamerly-tools' ); ?></button>
+			<?php endif; ?>
 		</div>
 		<div class="nknm-tray" data-nknm-tray hidden>
 			<div class="nknm-tray-head">

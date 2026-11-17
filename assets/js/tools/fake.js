@@ -56,7 +56,18 @@
 		return style === 'uncommon' || style === 'short' ? NKNM.pick(list) : ranked(list);
 	}
 
+	// Parts of each generated name, keyed by the full name string, for CSV/JSON export.
+	var META = {};
+
 	NKNM.register('fake', {
+		rows: function (names) {
+			return names.map(function (n) {
+				var m = META[n];
+				if (m) return { first_name: m.first, middle_name: m.middle, last_name: m.last, full_name: n, gender: m.gender };
+				var p = n.split(' ');
+				return { first_name: p[0], middle_name: p.slice(1, -1).join(' '), last_name: p[p.length - 1], full_name: n, gender: '' };
+			});
+		},
 		generate: function (o) {
 			var style = o.style && o.style !== 'random' ? o.style : '';
 			var type = o.gender || 'mix';
@@ -67,14 +78,16 @@
 				var second = surname('');
 				if (second !== last) last += '-' + second;
 			}
-			var out = first;
+			var middle = '';
 			if (type === 'mid') {
 				var mid = given(sex, style === 'short' ? 'short' : '', '');
-				if (mid !== first) out += ' ' + mid;
+				if (mid !== first) middle = mid;
 			} else if (type === 'mi') {
-				out += ' ' + NKNM.pick('ABCDEFGHJKLMNPRSTW'.split('')) + '.';
+				middle = NKNM.pick('ABCDEFGHJKLMNPRSTW'.split('')) + '.';
 			}
-			return out + ' ' + last;
+			var full = first + (middle ? ' ' + middle : '') + ' ' + last;
+			META[full] = { first: first, middle: middle, last: last, gender: sex === 'f' ? 'female' : 'male' };
+			return full;
 		}
 	});
 })();

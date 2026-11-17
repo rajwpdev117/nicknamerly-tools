@@ -47,6 +47,7 @@ function nknm_register_tool( $slug, $args ) {
 				'genders'          => array(),
 				'counts'           => array(),
 				'bulk'             => false,
+				'export'           => false,
 				'name2_label'      => '',
 				'name2_placeholder' => '',
 				'rich'             => false,

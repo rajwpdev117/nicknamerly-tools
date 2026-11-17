@@ -436,16 +436,38 @@ renderTray();
 				if (status) status.textContent = shown.length + ' names copied to clipboard.';
 			}, function () { flash(copyAllBtn, 'Copy failed'); });
 		});
-		if (dlBtn) dlBtn.addEventListener('click', function () {
-			var blob = new Blob([shown.join('\n') + '\n'], { type: 'text/plain' });
+		var fileBase = slug === 'lastname' ? 'last-names' : slug === 'random' ? 'random-names' : slug + '-names';
+		function saveFile(text, ext, mime) {
+			var blob = new Blob([text], { type: mime });
 			var a = document.createElement('a');
 			a.href = URL.createObjectURL(blob);
-			a.download = (slug === 'lastname' ? 'last-names' : slug === 'random' ? 'random-names' : slug + '-names') + '.txt';
+			a.download = fileBase + '.' + ext;
 			document.body.appendChild(a);
 			a.click();
 			document.body.removeChild(a);
 			setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+		}
+		if (dlBtn) dlBtn.addEventListener('click', function () {
+			saveFile(shown.join('\n') + '\n', 'txt', 'text/plain');
 			flash(dlBtn, 'Downloaded!');
+		});
+		// CSV / JSON export: tools may provide rows(names) -> array of flat objects with the same keys.
+		Array.prototype.forEach.call(root.querySelectorAll('[data-nknm-export]'), function (btn) {
+			btn.addEventListener('click', function () {
+				var rows = typeof tool.rows === 'function' ? tool.rows(shown) : shown.map(function (n) { return { name: n }; });
+				if (!rows.length) return;
+				var fmt = btn.getAttribute('data-nknm-export');
+				if (fmt === 'json') {
+					saveFile(JSON.stringify(rows, null, 2) + '\n', 'json', 'application/json');
+				} else {
+					var keys = Object.keys(rows[0]);
+					var q = function (v) { return '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"'; };
+					var lines = [keys.join(',')].concat(rows.map(function (r) { return keys.map(function (k) { return q(r[k]); }).join(','); }));
+					saveFile(lines.join('\r\n') + '\r\n', 'csv', 'text/csv');
+				}
+				flash(btn, 'Downloaded!');
+				if (status) status.textContent = rows.length + ' names downloaded as ' + fmt.toUpperCase() + '.';
+			});
 		});
 
 		grid.addEventListener('click', function (e) {
