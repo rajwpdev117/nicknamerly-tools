@@ -98,7 +98,10 @@ body.nknm-front .comments-area, body.nknm-front .entry-meta, body.nknm-front foo
 
 .nknm-steps, .nknm-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; margin-top: 22px; }
 .nknm-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
-.nknm-cards--tools { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.nknm-cards--tools { grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+.nknm-sec .nknm-cardgroup { margin: 36px 0 0; }
+.nknm-sec h2 + .nknm-cardgroup { margin-top: 22px; }
+.nknm-cardgroup + .nknm-cards { margin-top: 14px; }
 .nknm-step { padding: 22px; border-radius: 18px; background: var(--nknm-soft); }
 .nknm-step h3 { margin-bottom: 6px; }
 .nknm-step p:last-child { margin: 0; }

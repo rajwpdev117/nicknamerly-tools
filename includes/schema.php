@@ -69,7 +69,7 @@ function nknm_tool_json_ld( $data ) {
 		'applicationCategory' => 'UtilitiesApplication',
 		'operatingSystem'     => 'Any',
 		'browserRequirements' => 'Requires JavaScript',
-		'isAccessibleForFree' => true,
+		'isAccessibleForFree' => 'True',
 		'inLanguage'          => 'en-US',
 		'offers'              => array(
 			'@type'         => 'Offer',
