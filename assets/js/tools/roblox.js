@@ -59,9 +59,13 @@
 			var style = o.style && o.style !== 'random' ? o.style : NKNM.pick(STYLES);
 			var kw = word(o.name);
 			var fmt = o.gender || 'mix';
-			for (var i = 0; i < 40; i++) {
-				var name = make(style, fmt, kw);
-				if (!name || name.length > 20 || name.length < 3) continue;
+			var max = Math.min(20, parseInt(o.extra, 10) || 20);
+			var tries = max < 12 ? 120 : 40;
+			for (var i = 0; i < tries; i++) {
+				// Short limits: try the chosen style first; fall back to the short and clean pool only if it cannot fit.
+				var st = max < 12 && i >= 90 ? 'clean' : style;
+				var name = make(st, fmt, kw);
+				if (!name || name.length > max || name.length < 3) continue;
 				if (!/^[A-Za-z0-9]+(_[A-Za-z0-9]+)?$/.test(name) || !/[A-Za-z]/.test(name)) continue;
 				if (BAD.test(name)) continue;
 				return name;

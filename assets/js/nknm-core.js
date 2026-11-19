@@ -176,7 +176,7 @@
 		return li;
 	}
 
-	function buildItem(name, withVariants) {
+	function buildItem(name, withVariants, maxLen) {
 		if (typeof name === 'object') return buildRichItem(name);
 		var li = document.createElement('li');
 		li.className = 'nknm-item';
@@ -190,6 +190,13 @@
 		text.className = 'nknm-name-text';
 		text.textContent = name;
 		span.appendChild(text);
+		if (maxLen) {
+			var len = document.createElement('span');
+			len.className = 'nknm-len';
+			len.textContent = name.length + '/' + maxLen;
+			len.setAttribute('aria-label', name.length + ' of ' + maxLen + ' characters');
+			span.appendChild(len);
+		}
 		var btn = document.createElement('button');
 		btn.type = 'button';
 		btn.className = 'nknm-copy';
@@ -215,6 +222,8 @@
 		var styleEl = root.querySelector('[name="nknm_style"]');
 		var genderEl = root.querySelector('[name="nknm_gender"]');
 		var countEl = root.querySelector('[name="nknm_count"]');
+		var extraEl = root.querySelector('[name="nknm_extra"]');
+		var maxLen = parseInt(root.getAttribute('data-nknm-len'), 10) || 0;
 		var copyAllBtn = root.querySelector('[data-nknm-copyall]');
 		var dlBtn = root.querySelector('[data-nknm-download]');
 		var moreBtn = root.querySelector('[data-nknm-more]');
@@ -328,13 +337,14 @@
 				name: nameEl ? NKNM.cleanName(nameEl.value) : '',
 				name2: name2El ? NKNM.cleanName(name2El.value) : '',
 				style: styleEl ? styleEl.value : '',
-				gender: genderEl ? genderEl.value : ''
+				gender: genderEl ? genderEl.value : '',
+				extra: extraEl ? extraEl.value : ''
 			};
 		}
 
 		function render(names) {
 			var frag = document.createDocumentFragment();
-			names.forEach(function (n) { frag.appendChild(buildItem(n, withVariants)); });
+			names.forEach(function (n) { frag.appendChild(buildItem(n, withVariants, maxLen)); });
 			grid.classList.remove('is-fresh');
 			grid.textContent = '';
 			grid.appendChild(frag);
@@ -356,7 +366,7 @@
 		// Fresh list on every visit. Pre-rendered examples stay in the HTML for search engines;
 		// same count, so no layout shift. Status text is cleared so screen readers aren't interrupted on load.
 		(function () {
-			var names = NKNM.unique(function () { return tool.generate({ name: '', style: styleEl ? styleEl.value : '', gender: genderEl ? genderEl.value : '' }); }, count, []);
+			var names = NKNM.unique(function () { return tool.generate({ name: '', style: styleEl ? styleEl.value : '', gender: genderEl ? genderEl.value : '', extra: extraEl ? extraEl.value : '' }); }, count, []);
 			render(names);
 			grid.classList.remove('is-fresh');
 			if (status) status.textContent = '';
@@ -411,6 +421,7 @@ renderTray();
 		if (moreBtn) moreBtn.addEventListener('click', generate);
 		if (styleEl) styleEl.addEventListener('change', generate);
 		if (genderEl) genderEl.addEventListener('change', generate);
+		if (extraEl) extraEl.addEventListener('change', generate);
 		if (countEl) countEl.addEventListener('change', generate);
 		// Banner links such as "Get random nicknames" point at #top. Besides scrolling up,
 		// clear the name fields and build a fresh random list (first tool on the page only).

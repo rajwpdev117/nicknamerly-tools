@@ -32,6 +32,14 @@ nknm_register_tool(
 			'under' => __( 'One underscore', 'nicknamerly-tools' ),
 			'num'   => __( 'With numbers', 'nicknamerly-tools' ),
 		),
+		'show_length'      => 20,
+		'extra_label'      => __( 'Max length', 'nicknamerly-tools' ),
+		'extra'            => array(
+			''   => __( 'Any (up to 20)', 'nicknamerly-tools' ),
+			'16' => __( '16 or fewer', 'nicknamerly-tools' ),
+			'12' => __( '12 or fewer', 'nicknamerly-tools' ),
+			'8'  => __( '8 or fewer', 'nicknamerly-tools' ),
+		),
 		'examples'         => array(
 			'FrostFalcon',
 			'NeonReaper',

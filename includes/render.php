@@ -44,11 +44,11 @@ function nknm_render_tool( $slug, $atts ) {
 
 	// Styles (3-8) show as one-tap chips; the select stays in the DOM (hidden) as the value holder.
 	$chips = $tool['styles'] && count( $tool['styles'] ) >= 3 && count( $tool['styles'] ) <= 8;
-	$cols  = max( 1, (int) (bool) $tool['name_input'] + (int) (bool) $tool['name2_label'] + (int) (bool) $tool['genders'] + (int) (bool) $tool['counts'] );
+	$cols  = max( 1, (int) (bool) $tool['name_input'] + (int) (bool) $tool['name2_label'] + (int) (bool) $tool['genders'] + (int) (bool) $tool['extra'] + (int) (bool) $tool['counts'] );
 
 	ob_start();
 	?>
-	<div class="nknm-tool<?php echo $chips ? ' nknm-tool--chips' : ''; ?><?php echo ( $tool['genders'] || $tool['counts'] || $tool['name2_label'] ) ? ' nknm-tool--wide' : ''; ?><?php echo $tool['rich'] ? ' nknm-tool--rich' : ''; ?>" id="<?php echo esc_attr( $id ); ?>"<?php echo $chips ? ' style="--nknm-cols:' . (int) $cols . '"' : ''; ?> data-nknm-tool="<?php echo esc_attr( $slug ); ?>" data-nknm-count="<?php echo esc_attr( (string) $count ); ?>" data-nknm-variants="<?php echo $tool['variants'] ? '1' : '0'; ?>">
+	<div class="nknm-tool<?php echo $chips ? ' nknm-tool--chips' : ''; ?><?php echo ( $tool['genders'] || $tool['counts'] || $tool['name2_label'] ) ? ' nknm-tool--wide' : ''; ?><?php echo $tool['rich'] ? ' nknm-tool--rich' : ''; ?><?php echo $tool['show_length'] ? ' nknm-tool--len' : ''; ?>" id="<?php echo esc_attr( $id ); ?>"<?php echo $chips ? ' style="--nknm-cols:' . (int) $cols . '"' : ''; ?> data-nknm-tool="<?php echo esc_attr( $slug ); ?>" data-nknm-count="<?php echo esc_attr( (string) $count ); ?>" data-nknm-variants="<?php echo $tool['variants'] ? '1' : '0'; ?>"<?php echo $tool['show_length'] ? ' data-nknm-len="' . (int) $tool['show_length'] . '"' : ''; ?>>
 		<form class="nknm-form" novalidate>
 			<?php if ( $tool['name_input'] ) : ?>
 				<div class="nknm-field nknm-field--name">
@@ -96,6 +96,16 @@ function nknm_render_tool( $slug, $atts ) {
 					</select>
 				</div>
 			<?php endif; ?>
+			<?php if ( $tool['extra'] ) : ?>
+				<div class="nknm-field nknm-field--extra">
+					<label for="<?php echo esc_attr( $id ); ?>-extra"><?php echo esc_html( $tool['extra_label'] ); ?></label>
+					<select id="<?php echo esc_attr( $id ); ?>-extra" name="nknm_extra">
+						<?php foreach ( $tool['extra'] as $value => $label ) : ?>
+							<option value="<?php echo esc_attr( (string) $value ); ?>"><?php echo esc_html( $label ); ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+			<?php endif; ?>
 			<?php if ( $tool['counts'] ) : ?>
 				<div class="nknm-field nknm-field--count">
 					<label for="<?php echo esc_attr( $id ); ?>-count"><?php esc_html_e( 'How many', 'nicknamerly-tools' ); ?></label>
@@ -129,7 +139,7 @@ function nknm_render_tool( $slug, $atts ) {
 						<?php if ( $tool['variants'] ) : ?>
 							<button type="button" class="nknm-name" aria-expanded="false"><span class="nknm-name-text"><?php echo esc_html( $name ); ?></span></button>
 						<?php else : ?>
-							<span class="nknm-name"><span class="nknm-name-text"><?php echo esc_html( $name ); ?></span></span>
+							<span class="nknm-name"><span class="nknm-name-text"><?php echo esc_html( $name ); ?></span><?php if ( $tool['show_length'] ) : ?><span class="nknm-len"><?php echo esc_html( mb_strlen( $name ) . '/' . (int) $tool['show_length'] ); ?></span><?php endif; ?></span>
 						<?php endif; ?>
 						<button type="button" class="nknm-copy" data-nknm-copy="<?php echo esc_attr( $name ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: name */ __( 'Copy %s', 'nicknamerly-tools' ), $name ) ); ?>"><?php esc_html_e( 'Copy', 'nicknamerly-tools' ); ?></button>
 					</li>
