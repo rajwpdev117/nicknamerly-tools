@@ -97,12 +97,15 @@ function nknm_related_tools( $slug ) {
 		'band'      => array( 'band-name-generator', 'Band Name Generator', 'Names for rock, metal, punk and more.', 'B' ),
 		'rap'       => array( 'rap-name-generator', 'Rap Name Generator', 'Stage names in every style.', 'R' ),
 		'nickname'  => array( '', 'Nickname Generator', 'Cool and funny nicknames.', 'N' ),
+		'roblox'    => array( 'roblox-username-generator', 'Roblox Username Generator', 'Names that fit Roblox’s rules.', 'R' ),
+		'discord'   => array( 'discord-usernames', 'Discord Username Generator', 'Lowercase names that fit Discord’s rules.', 'D' ),
 	);
 	$map = array(
 		'how-to-choose-a-good-username' => array( 'username', 'aesthetic', 'gamertag' ),
 		'how-to-choose-a-pen-name'      => array( 'pen', 'female', 'lastname' ),
 		'how-to-name-a-band'            => array( 'band', 'rap', 'username' ),
 		'how-to-pick-a-rap-name'        => array( 'rap', 'username', 'band' ),
+		'username-rules-by-platform'    => array( 'discord', 'roblox', 'gamertag' ),
 	);
 	$keys = isset( $map[ $slug ] ) ? $map[ $slug ] : array( 'nickname', 'username', 'gamertag' );
 	$out  = array();
@@ -119,6 +122,7 @@ function nknm_hero_chips( $slug ) {
 		'how-to-choose-a-pen-name'      => array( 'J. R. Hale', 'Mara Quill', 'Wren Ashby', 'E. L. Rowan' ),
 		'how-to-name-a-band'            => array( 'The Quiet Hours', 'Static Bloom', 'Paper Tigers', 'Low Tide Club' ),
 		'how-to-pick-a-rap-name'        => array( 'Quiet Storm', 'Neon Saint', 'Kid Vesper', 'J.R. Ember' ),
+		'username-rules-by-platform'    => array( 'pixel.otter', 'Sleepy_Moss', 'NovaFlux#482', 'lumen.fox' ),
 	);
 	return isset( $map[ $slug ] ) ? $map[ $slug ] : array( 'bright.fox', 'Luna Vale', 'northwind', 'Pixel Moth' );
 }
