@@ -139,7 +139,7 @@ function nknm_render_tool( $slug, $atts ) {
 						<?php if ( $tool['variants'] ) : ?>
 							<button type="button" class="nknm-name" aria-expanded="false"><span class="nknm-name-text"><?php echo esc_html( $name ); ?></span></button>
 						<?php else : ?>
-							<span class="nknm-name"><span class="nknm-name-text"><?php echo esc_html( $name ); ?></span><?php if ( $tool['show_length'] ) : ?><span class="nknm-len"><?php echo esc_html( mb_strlen( $name ) . '/' . (int) $tool['show_length'] ); ?></span><?php endif; ?></span>
+							<span class="nknm-name"><span class="nknm-name-text"><?php echo $tool['show_length'] ? preg_replace( '/(_)|(?<=[a-z0-9])(?=[A-Z])/', '$1<wbr>', esc_html( $name ) ) : esc_html( $name ); ?></span><?php if ( $tool['show_length'] ) : ?><span class="nknm-len"><?php echo esc_html( mb_strlen( $name ) . '/' . (int) $tool['show_length'] ); ?></span><?php endif; ?></span>
 						<?php endif; ?>
 						<button type="button" class="nknm-copy" data-nknm-copy="<?php echo esc_attr( $name ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: name */ __( 'Copy %s', 'nicknamerly-tools' ), $name ) ); ?>"><?php esc_html_e( 'Copy', 'nicknamerly-tools' ); ?></button>
 					</li>

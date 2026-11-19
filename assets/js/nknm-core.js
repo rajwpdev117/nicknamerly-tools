@@ -188,7 +188,22 @@
 		}
 		var text = document.createElement('span');
 		text.className = 'nknm-name-text';
-		text.textContent = name;
+		if (maxLen) {
+			// Usernames have no spaces: allow line breaks only after "_" and before a capital that follows a lowercase letter or digit.
+			var seg = '';
+			for (var ci = 0; ci < name.length; ci++) {
+				var ch = name.charAt(ci), prev = ci ? name.charAt(ci - 1) : '';
+				if (ci && (prev === '_' || (/[A-Z]/.test(ch) && /[a-z0-9]/.test(prev)))) {
+					text.appendChild(document.createTextNode(seg));
+					text.appendChild(document.createElement('wbr'));
+					seg = '';
+				}
+				seg += ch;
+			}
+			text.appendChild(document.createTextNode(seg));
+		} else {
+			text.textContent = name;
+		}
 		span.appendChild(text);
 		if (maxLen) {
 			var len = document.createElement('span');
