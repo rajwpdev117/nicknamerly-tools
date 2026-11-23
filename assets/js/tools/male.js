@@ -6,6 +6,15 @@
 	var D = window.NKNM_DATA && window.NKNM_DATA.random;
 	if (!NKNM || !D) return;
 
+	var DEC = window.NKNM_DATA && window.NKNM_DATA.decade;
+	var DECADE = {};
+	/** SSA top 200 for one decade, most popular first. */
+	function decadeList(key) {
+		if (!key || !DEC || !DEC[key]) return null;
+		if (!DECADE[key]) DECADE[key] = DEC[key].m.split(' ');
+		return DECADE[key];
+	}
+
 	var OWN = D.m, OTHER = D.f, LAST = D.l;
 	var rank = {};
 	OTHER.forEach(function (n, i) { if (rank[n] === undefined) rank[n] = i; });
@@ -31,7 +40,26 @@
 		return m ? m[0].toUpperCase() : '';
 	}
 
-	function pick(style, want) {
+	function pickDecade(all, style, want) {
+		var bands = {
+			popular: all.slice(0, 50),
+			classic: all.slice(50, 100),
+			unique: all.slice(100),
+			short: all.filter(function (n) { return n.length <= 4; }),
+			long: all.filter(function (n) { return n.length >= 7; })
+		};
+		var list = bands[style] && bands[style].length ? bands[style] : all;
+		if (want) {
+			var f = list.filter(function (n) { return n.charAt(0).toUpperCase() === want; });
+			if (!f.length) f = all.filter(function (n) { return n.charAt(0).toUpperCase() === want; });
+			if (f.length) list = f;
+		}
+		return style === 'unique' || style === 'long' || style === 'short' || want ? NKNM.pick(list) : ranked(list);
+	}
+
+	function pick(style, want, decade) {
+		var dl = decadeList(decade);
+		if (dl) return pickDecade(dl, style, want);
 		var list = BAND[style] || POOL;
 		if (want) {
 			var f = list.filter(function (n) { return n.charAt(0).toUpperCase() === want; });
@@ -44,7 +72,7 @@
 	NKNM.register('male', {
 		generate: function (o) {
 			var style = o.style && o.style !== 'random' ? o.style : '';
-			var first = pick(style, initialOf(o.name));
+			var first = pick(style, initialOf(o.name), o.extra);
 			return o.gender === 'full' ? first + ' ' + ranked(LAST) : first;
 		}
 	});

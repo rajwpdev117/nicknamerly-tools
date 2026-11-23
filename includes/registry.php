@@ -39,6 +39,7 @@ function nknm_register_tool( $slug, $args ) {
 			'styles'           => array(),
 			'name_input'       => false,
 			'data'             => '',
+			'data_extra'       => '',
 			'name_label'       => __( 'Your name (optional)', 'nicknamerly-tools' ),
 			'name_placeholder' => '',
 			'examples'         => array(),
@@ -78,7 +79,16 @@ function nknm_register_assets() {
 		if ( ! wp_script_is( "nknm-data-{$data}", 'registered' ) ) {
 			wp_register_script( "nknm-data-{$data}", NKNM_URL . "assets/js/data/{$data}-data.js", array(), NKNM_VERSION, $script_args );
 		}
-		wp_register_script( "nknm-tool-{$slug}", NKNM_URL . "assets/js/tools/{$slug}.js", array( 'nknm-core', "nknm-data-{$data}" ), NKNM_VERSION, $script_args );
+		$deps = array( 'nknm-core', "nknm-data-{$data}" );
+		// A tool may load one more word list (e.g. SSA decade data) via 'data_extra'.
+		if ( ! empty( $tool['data_extra'] ) ) {
+			$extra = $tool['data_extra'];
+			if ( ! wp_script_is( "nknm-data-{$extra}", 'registered' ) ) {
+				wp_register_script( "nknm-data-{$extra}", NKNM_URL . "assets/js/data/{$extra}-data.js", array(), NKNM_VERSION, $script_args );
+			}
+			$deps[] = "nknm-data-{$extra}";
+		}
+		wp_register_script( "nknm-tool-{$slug}", NKNM_URL . "assets/js/tools/{$slug}.js", $deps, NKNM_VERSION, $script_args );
 	}
 }
 

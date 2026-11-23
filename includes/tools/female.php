@@ -29,6 +29,18 @@ nknm_register_tool(
 			'first' => __( 'First names', 'nicknamerly-tools' ),
 			'full'  => __( 'First + last name', 'nicknamerly-tools' ),
 		),
+		'data_extra'       => 'decade',
+		'extra_label'      => __( 'Decade', 'nicknamerly-tools' ),
+		'extra'            => array(
+			''      => __( 'Any (today\'s mix)', 'nicknamerly-tools' ),
+			'1960s' => __( '1960s', 'nicknamerly-tools' ),
+			'1970s' => __( '1970s', 'nicknamerly-tools' ),
+			'1980s' => __( '1980s', 'nicknamerly-tools' ),
+			'1990s' => __( '1990s', 'nicknamerly-tools' ),
+			'2000s' => __( '2000s', 'nicknamerly-tools' ),
+			'2010s' => __( '2010s', 'nicknamerly-tools' ),
+			'2020s' => __( '2020s so far', 'nicknamerly-tools' ),
+		),
 		'examples'         => array(
 			'Emily',
 			'Olivia',
