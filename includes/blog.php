@@ -99,6 +99,7 @@ function nknm_related_tools( $slug ) {
 		'nickname'  => array( '', 'Nickname Generator', 'Cool and funny nicknames.', 'N' ),
 		'roblox'    => array( 'roblox-username-generator', 'Roblox Username Generator', 'Names that fit Roblox’s rules.', 'R' ),
 		'discord'   => array( 'discord-usernames', 'Discord Username Generator', 'Lowercase names that fit Discord’s rules.', 'D' ),
+		'ship'      => array( 'ship-name-generator', 'Ship Name Generator', 'Blend two names into one.', 'S' ),
 	);
 	$map = array(
 		'how-to-choose-a-good-username' => array( 'username', 'aesthetic', 'gamertag' ),
@@ -106,6 +107,7 @@ function nknm_related_tools( $slug ) {
 		'how-to-name-a-band'            => array( 'band', 'rap', 'username' ),
 		'how-to-pick-a-rap-name'        => array( 'rap', 'username', 'band' ),
 		'username-rules-by-platform'    => array( 'discord', 'roblox', 'gamertag' ),
+		'types-of-nicknames'            => array( 'nickname', 'ship', 'username' ),
 	);
 	$keys = isset( $map[ $slug ] ) ? $map[ $slug ] : array( 'nickname', 'username', 'gamertag' );
 	$out  = array();
@@ -123,6 +125,7 @@ function nknm_hero_chips( $slug ) {
 		'how-to-name-a-band'            => array( 'The Quiet Hours', 'Static Bloom', 'Paper Tigers', 'Low Tide Club' ),
 		'how-to-pick-a-rap-name'        => array( 'Quiet Storm', 'Neon Saint', 'Kid Vesper', 'J.R. Ember' ),
 		'username-rules-by-platform'    => array( 'pixel.otter', 'Sleepy_Moss', 'NovaFlux#482', 'lumen.fox' ),
+		'types-of-nicknames'            => array( 'Lexi', 'Mighty Mike', 'JT', 'Honey Bean' ),
 	);
 	return isset( $map[ $slug ] ) ? $map[ $slug ] : array( 'bright.fox', 'Luna Vale', 'northwind', 'Pixel Moth' );
 }
