@@ -134,6 +134,15 @@ function nknm_identity_json_ld( $data ) {
 			$data[ $key ]['sameAs'] = array_values( array_unique( array_merge( $same, $owner_profiles ) ) );
 		}
 
+		// Rank Math fills the WebPage name from a title variable after this filter and escapes "&".
+		// Set the resolved SEO title here instead, so no variable is left to escape.
+		if ( in_array( 'WebPage', $types, true ) && is_singular() && class_exists( 'RankMath\\Paper\\Paper' ) ) {
+			$title = \RankMath\Paper\Paper::get()->get_title();
+			if ( is_string( $title ) && '' !== $title ) {
+				$data[ $key ]['name'] = wp_strip_all_tags( $title );
+			}
+		}
+
 		foreach ( array( 'name', 'headline', 'description', 'caption' ) as $field ) {
 			if ( isset( $data[ $key ][ $field ] ) && is_string( $data[ $key ][ $field ] ) ) {
 				$data[ $key ][ $field ] = html_entity_decode( $data[ $key ][ $field ], ENT_QUOTES | ENT_HTML5, 'UTF-8' );
