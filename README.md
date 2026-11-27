@@ -29,6 +29,7 @@ Lightweight WordPress plugin behind [Nicknamerly.com](https://nicknamerly.com): 
 | `[dragonborn_name_generator]` | Dragonborn name generator (fire, frost, storm, venom clans; childhood nicknames; meanings and pronunciation; invented syllables) |
 | `[drow_name_generator]` | Drow name generator (noble house names, common trade names, surface exiles, house names; meanings and pronunciation; invented syllables) |
 | `[vampire_name_generator]` | Vampire name generator (gothic, modern, noble titles, coven names; meanings and pronunciation; invented syllables) |
+| `[dnd_name_generator]` | D&D name generator (11 races: reuses the elf, drow, dwarf, dragonborn and tiefling engines, adds human, halfling, gnome and half-orc; pronunciation, meanings and an optional class backstory hook) |
 | `[fake_name_generator]` | Fake name generator (realistic, common, uncommon, short, double surname; middle name or initial; US SSA + Census data; names only) |
 | `[discord_server_name_generator]` | Discord server name generator (server type, name shape, optional topic) |
 | `[city_name_generator]` | City name generator (setting: fantasy, medieval, sci-fi, modern US-style, dark fantasy; shape: one word, two words, "City of"; starting letter) |

@@ -40,6 +40,7 @@ function nknm_register_tool( $slug, $args ) {
 			'name_input'       => false,
 			'data'             => '',
 			'data_extra'       => '',
+			'uses'             => array(),
 			'name_label'       => __( 'Your name (optional)', 'nicknamerly-tools' ),
 			'name_placeholder' => '',
 			'examples'         => array(),
@@ -87,6 +88,12 @@ function nknm_register_assets() {
 				wp_register_script( "nknm-data-{$extra}", NKNM_URL . "assets/js/data/{$extra}-data.js", array(), NKNM_VERSION, $script_args );
 			}
 			$deps[] = "nknm-data-{$extra}";
+		}
+		// A tool may reuse other tools' engines (e.g. the D&D tool calls the elf and dwarf tools).
+		if ( ! empty( $tool['uses'] ) ) {
+			foreach ( (array) $tool['uses'] as $used ) {
+				$deps[] = "nknm-tool-{$used}";
+			}
 		}
 		wp_register_script( "nknm-tool-{$slug}", NKNM_URL . "assets/js/tools/{$slug}.js", $deps, NKNM_VERSION, $script_args );
 	}
